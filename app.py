@@ -274,7 +274,6 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
         label="",
         height=420,
         show_label=False,
-        bubble_full_width=False,
     )
 
     with gr.Row():
@@ -299,4 +298,6 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
     demo.load(fn=bienvenida, outputs=[chatbot])
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    import os as _os
+port = int(_os.environ.get("PORT", 7860))
+demo.launch(server_name="0.0.0.0", server_port=port)
