@@ -211,9 +211,7 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
     txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
 
 if __name__ == "__main__":
+    import uvicorn
     port = int(os.environ.get("PORT", 10000))
-    demo.launch(
-        server_name="0.0.0.0",
-        server_port=port,
-        show_error=True,
-    )
+    app = demo.app
+    uvicorn.run(app, host="0.0.0.0", port=port)
