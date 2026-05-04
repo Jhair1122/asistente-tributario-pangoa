@@ -1,0 +1,245 @@
+[
+  {
+    "categoria": "pago_metodo",
+    "pregunta": "¿Cómo pago mi impuesto predial?",
+    "respuesta": "Puede pagar su impuesto predial acercándose a la caja de la Municipalidad con su DNI o código de contribuyente. También puede consultar si existen opciones de pago en línea o mediante bancos autorizados.",
+    "variantes": [
+      "¿Cómo cancelo el impuesto predial?",
+      "quiero pagar mi impuesto",
+      "cómo hago para pagar",
+      "formas de pago del predial",
+      "pagar impuesto",
+      "como pago",
+      "COMO PAGO MI IMPUESTO",
+      "cómo puedo pagar mis tributos",
+      "formas para pagar impuestos municipales"
+    ]
+  },
+  {
+    "categoria": "pago_lugar",
+    "pregunta": "¿Dónde puedo pagar mi impuesto?",
+    "respuesta": "Puede realizar el pago en la caja de la Municipalidad Distrital de Pangoa. También puede consultar si hay bancos o agentes autorizados para efectuar el pago.",
+    "variantes": [
+      "¿Dónde pago mi predio?",
+      "¿Dónde puedo pagar?",
+      "dónde se paga el impuesto",
+      "donde pago",
+      "LUGAR DE PAGO",
+      "puedo pagar en banco",
+      "dónde queda caja municipal"
+    ]
+  },
+  {
+    "categoria": "deuda_monto",
+    "pregunta": "¿Cuánto debo pagar?",
+    "respuesta": "Para conocer el monto exacto de su deuda, debe acercarse a la Subgerencia de Rentas con su DNI o código de contribuyente. Allí le brindarán el detalle actualizado.",
+    "variantes": [
+      "¿Cuánto debo?",
+      "¿Cuánto me falta pagar?",
+      "cuánto tengo que pagar",
+      "saber cuánto debo",
+      "CUANTO DEBO",
+      "cuanto es mi deuda",
+      "cuánto debo en impuestos"
+    ]
+  },
+  {
+    "categoria": "deuda_estado",
+    "pregunta": "¿Cuál es mi estado de cuenta?",
+    "respuesta": "Puede solicitar su estado de cuenta en la Subgerencia de Rentas. Allí le informarán sobre deudas pendientes, intereses acumulados y posibles multas.",
+    "variantes": [
+      "¿Cuál es mi deuda?",
+      "consultar mi deuda",
+      "quiero saber mi deuda",
+      "estado de cuenta",
+      "¿Tengo deudas pendientes?",
+      "ver mis pagos",
+      "historial de pagos"
+    ]
+  },
+  {
+    "categoria": "fraccionamiento",
+    "pregunta": "¿Puedo fraccionar mi deuda?",
+    "respuesta": "Sí, puede solicitar el fraccionamiento de su deuda tributaria acercándose a la Subgerencia de Rentas con su DNI. Se evaluará su caso y podrá acceder a un plan de pagos en cuotas.",
+    "variantes": [
+      "¿Puedo pagar en cuotas?",
+      "¿Hay facilidades de pago?",
+      "quiero fraccionar mi deuda",
+      "pagar en partes",
+      "cuotas para pagar",
+      "plan de pagos",
+      "PUEDO FRACCIONAR",
+      "puedo dividir mi deuda"
+    ]
+  },
+  {
+    "categoria": "fraccionamiento_caso",
+    "pregunta": "Tengo deudas antiguas y quiero pagar en cuotas",
+    "respuesta": "Si tiene deudas acumuladas de varios años, puede solicitar un fraccionamiento acercándose a la Subgerencia de Rentas con su DNI. El personal evaluará su caso y podrá ofrecerle un plan de pagos en cuotas de acuerdo a su situación.",
+    "variantes": [
+      "tengo años de deuda y quiero pagar en cuotas",
+      "debo varios años y no puedo pagar todo",
+      "tengo deuda acumulada",
+      "quiero pagar poco a poco",
+      "no puedo pagar todo de golpe",
+      "tengo muchos años sin pagar",
+      "como puedo hacer si tengo años morosos",
+      "COMO PUEDO HACER SI TENGO AÑOS MOROSOS Y QUIERO PAGAR EN CUOTAS",
+      "tengo deuda antigua puedo pagar en partes"
+    ]
+  },
+  {
+    "categoria": "multa_consecuencia",
+    "pregunta": "¿Qué pasa si no pago a tiempo?",
+    "respuesta": "Si no paga dentro del plazo, se generarán intereses moratorios y su deuda aumentará. Además, puede iniciarse un proceso de cobranza coactiva.",
+    "variantes": [
+      "¿Qué pasa si no pago?",
+      "consecuencias de no pagar",
+      "me pueden embargar",
+      "qué pasa si me atraso",
+      "QUE PASA SI NO PAGO",
+      "si no pago que pasa",
+      "problemas por deuda"
+    ]
+  },
+  {
+    "categoria": "multa_intereses",
+    "pregunta": "¿Cuánto es la multa por no pagar?",
+    "respuesta": "Las deudas generan intereses moratorios que aumentan con el tiempo. Para conocer el monto exacto de intereses o multas, debe consultar en la Subgerencia de Rentas.",
+    "variantes": [
+      "mora por no pagar",
+      "intereses por deuda",
+      "penalidad por no pagar",
+      "cuánto sube mi deuda",
+      "cuanto es el interes"
+    ]
+  },
+  {
+    "categoria": "plazo_pago",
+    "pregunta": "¿Cuándo debo pagar el impuesto predial?",
+    "respuesta": "El impuesto predial puede pagarse al contado hasta febrero o en cuatro cuotas durante el año: febrero, mayo, agosto y noviembre.",
+    "variantes": [
+      "¿Cuándo debo pagar?",
+      "fechas de pago",
+      "hasta cuándo puedo pagar",
+      "cuándo vence",
+      "calendario de pagos",
+      "CUANDO PAGO"
+    ]
+  },
+  {
+    "categoria": "beneficio_pago_puntual",
+    "pregunta": "¿Qué pasa si pago puntual?",
+    "respuesta": "Pagar puntualmente sus tributos le permite evitar intereses y multas. Además, en algunos casos puede acceder a descuentos o beneficios que la Municipalidad ofrezca por pronto pago.",
+    "variantes": [
+      "si pago puntual que gano",
+      "beneficio por pagar a tiempo",
+      "qué gano si pago puntual",
+      "ventajas de pagar a tiempo",
+      "SI PAGO PUNTUAL QUE GANO",
+      "beneficios por pago puntual"
+    ]
+  },
+  {
+    "categoria": "descuento_beneficio",
+    "pregunta": "¿Hay descuentos o beneficios tributarios?",
+    "respuesta": "Sí, existen beneficios tributarios como deducciones para pensionistas y campañas de amnistía en determinados periodos con reducción de intereses y multas.",
+    "variantes": [
+      "¿Hay amnistía tributaria?",
+      "beneficios para pensionistas",
+      "descuento en el impuesto",
+      "condonación de deuda",
+      "hay rebajas",
+      "hay promociones de pago"
+    ]
+  },
+  {
+    "categoria": "predio_declaracion",
+    "pregunta": "¿Cómo declaro mi predio?",
+    "respuesta": "Debe acercarse a la Subgerencia de Rentas con su DNI y documentos del inmueble para registrar o actualizar su predio mediante la declaración jurada de autoavalúo.",
+    "variantes": [
+      "quiero declarar mi predio",
+      "cómo registro mi propiedad",
+      "autoavaluo",
+      "registrar propiedad",
+      "inscribir mi casa"
+    ]
+  },
+  {
+    "categoria": "tramite_requisitos",
+    "pregunta": "¿Qué documentos necesito para un trámite?",
+    "respuesta": "Generalmente necesitará DNI, código de contribuyente y documentos relacionados al inmueble. Los requisitos pueden variar según el trámite.",
+    "variantes": [
+      "qué documentos piden",
+      "qué necesito llevar",
+      "requisitos",
+      "documentación necesaria",
+      "QUE DOCUMENTOS NECESITO"
+    ]
+  },
+  {
+    "categoria": "horario_atencion",
+    "pregunta": "¿Cuál es el horario de atención?",
+    "respuesta": "La atención es de lunes a viernes de 8:00 a.m. a 1:00 p.m. y de 3:00 p.m. a 6:00 p.m.",
+    "variantes": [
+      "¿A qué hora atienden?",
+      "horario de la municipalidad",
+      "cuándo abren",
+      "horario de oficina",
+      "QUE HORA ATIENDEN",
+      "a que hora atienden"
+    ]
+  },
+  {
+    "categoria": "ubicacion_rentas",
+    "pregunta": "¿Dónde queda el área de rentas?",
+    "respuesta": "El área de rentas se encuentra dentro de la Municipalidad Distrital de Pangoa. Puede consultar en recepción para que le indiquen la ubicación exacta.",
+    "variantes": [
+      "dónde está rentas",
+      "ubicación de rentas",
+      "dónde está el área de tributos"
+    ]
+  },
+  {
+    "categoria": "ubicacion_municipalidad",
+    "pregunta": "¿Dónde queda la municipalidad?",
+    "respuesta": "La Municipalidad Distrital de Pangoa se encuentra en su sede principal. Puede consultar su dirección exacta en canales oficiales.",
+    "variantes": [
+      "dirección de la municipalidad",
+      "cómo llegar a la municipalidad",
+      "ubicación de la municipalidad"
+    ]
+  },
+  {
+    "categoria": "arbitrios_info",
+    "pregunta": "¿Qué son los arbitrios municipales?",
+    "respuesta": "Los arbitrios municipales son pagos por servicios públicos como limpieza, seguridad y mantenimiento de áreas verdes.",
+    "variantes": [
+      "qué es el arbitrio",
+      "arbitrios de limpieza",
+      "qué incluye el arbitrio"
+    ]
+  },
+  {
+    "categoria": "saludo",
+    "pregunta": "Hola",
+    "respuesta": "¡Hola! Soy el Asistente Tributario Virtual de la Municipalidad Distrital de Pangoa. ¿En qué puedo ayudarte?",
+    "variantes": [
+      "buenos días",
+      "buenas tardes",
+      "hola buenas",
+      "saludos"
+    ]
+  },
+  {
+    "categoria": "despedida",
+    "pregunta": "Gracias",
+    "respuesta": "¡Con gusto! Si tiene más consultas, puede acercarse a la Municipalidad de Pangoa. ¡Que tenga buen día!",
+    "variantes": [
+      "muchas gracias",
+      "hasta luego",
+      "adiós",
+      "bye"
+    ]
+  }
+]
