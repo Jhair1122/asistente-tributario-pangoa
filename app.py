@@ -304,4 +304,8 @@ print("Antes de lanzar Gradio")
 if __name__ == "__main__":
     import os as _os
     port = int(_os.environ.get("PORT", 7860))
-    demo.launch(server_name="0.0.0.0", server_port=port)
+    demo.launch(
+    server_name="0.0.0.0",
+    server_port=port,
+    share=False
+)
