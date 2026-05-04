@@ -38,19 +38,15 @@ def limpiar_texto(texto):
 def predecir_respuesta(pregunta_usuario):
     if not pregunta_usuario or not pregunta_usuario.strip():
         return None
-
     pregunta_limpia = limpiar_texto(pregunta_usuario)
-
     if modelo is None or vectorizer is None or label_encoder is None:
         return "⚠️ El modelo aún no está disponible. Verifica que los archivos .pkl estén en el repositorio."
-
     try:
         X             = vectorizer.transform([pregunta_limpia])
         proba         = modelo.predict_proba(X)[0]
         confianza     = float(np.max(proba))
         categoria_enc = int(np.argmax(proba))
         categoria     = label_encoder.inverse_transform([categoria_enc])[0]
-
         if confianza < UMBRAL_CONFIANZA:
             return (
                 "🤔 No estoy completamente seguro de tu consulta.\n"
@@ -60,16 +56,12 @@ def predecir_respuesta(pregunta_usuario):
                 "- ¿Cómo pago mi impuesto?\n"
                 "- ¿Puedo fraccionar mi deuda?"
             )
-
         for item in dataset:
             if item.get("categoria") == categoria:
                 return item.get("respuesta", "No tengo información sobre eso aún.")
-
         return "No encontré información para esa consulta. Le recomendamos acercarse a la Subgerencia de Rentas."
-
     except Exception as e:
         return f"Ocurrió un error al procesar su consulta: {str(e)}"
-
 
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -79,47 +71,25 @@ body, .gradio-container {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     min-height: 100vh;
 }
-.gradio-container {
-    max-width: 780px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-}
+.gradio-container { max-width: 780px !important; margin: 0 auto !important; padding: 0 !important; }
 .chat-header {
     background: linear-gradient(135deg, #0d4a2a 0%, #1a6b3c 60%, #145c32 100%);
-    padding: 28px 32px 22px;
-    border-radius: 0 0 24px 24px;
-    box-shadow: 0 4px 24px rgba(13,74,42,0.18);
-    position: relative;
-    overflow: hidden;
+    padding: 28px 32px 22px; border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 24px rgba(13,74,42,0.18); position: relative; overflow: hidden;
 }
 .chat-header::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 180px; height: 180px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 50%;
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px; background: rgba(255,255,255,0.04); border-radius: 50%;
 }
 .header-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #a8dbbe;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 600;
+    color: #a8dbbe; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px;
 }
 .header-dot {
-    width: 6px; height: 6px;
-    background: #4ade80;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
+    width: 6px; height: 6px; background: #4ade80;
+    border-radius: 50%; animation: pulse 2s infinite;
 }
 @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -134,18 +104,13 @@ body, .gradio-container {
 }
 .sugerencias-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
-    background: #ffffff;
-    border: 1.5px solid #c5dcc9;
-    border-radius: 20px;
-    padding: 7px 14px;
-    font-size: 13px; font-weight: 500; color: #145c32;
-    cursor: pointer; transition: all 0.18s ease;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #ffffff; border: 1.5px solid #c5dcc9; border-radius: 20px;
+    padding: 7px 14px; font-size: 13px; font-weight: 500; color: #145c32;
+    cursor: pointer; transition: all 0.18s ease; font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .chip:hover {
     background: #145c32; color: #ffffff; border-color: #145c32;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(20,92,50,0.2);
+    transform: translateY(-1px); box-shadow: 0 4px 12px rgba(20,92,50,0.2);
 }
 .divider {
     height: 1px;
@@ -153,21 +118,16 @@ body, .gradio-container {
     margin: 12px 20px;
 }
 .gradio-container [data-testid="chatbot"] {
-    background: #ffffff !important;
-    border: 1.5px solid #c5dcc9 !important;
-    border-radius: 16px !important;
-    margin: 0 16px !important;
+    background: #ffffff !important; border: 1.5px solid #c5dcc9 !important;
+    border-radius: 16px !important; margin: 0 16px !important;
     box-shadow: 0 2px 12px rgba(20,92,50,0.06) !important;
 }
 .gradio-container textarea,
 .gradio-container input[type=text] {
-    background: #ffffff !important;
-    color: #1a2e1e !important;
-    border: 1.5px solid #c5dcc9 !important;
-    border-radius: 12px !important;
+    background: #ffffff !important; color: #1a2e1e !important;
+    border: 1.5px solid #c5dcc9 !important; border-radius: 12px !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 14px !important;
-    padding: 10px 14px !important;
+    font-size: 14px !important; padding: 10px 14px !important;
     caret-color: #145c32 !important;
 }
 .gradio-container textarea::placeholder,
@@ -175,24 +135,16 @@ body, .gradio-container {
 .gradio-container textarea:focus,
 .gradio-container input[type=text]:focus {
     border-color: #145c32 !important;
-    box-shadow: 0 0 0 3px rgba(20,92,50,0.08) !important;
-    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(20,92,50,0.08) !important; outline: none !important;
 }
-#btn-enviar button, .gradio-container button.primary {
-    background: #145c32 !important;
-    border: none !important;
-    border-radius: 12px !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    font-size: 14px !important;
-    padding: 10px 22px !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    transition: background 0.18s !important;
-}
-#btn-enviar button:hover { background: #0d4a2a !important; }
+#btn-enviar { background: #145c32 !important; border: none !important;
+    border-radius: 12px !important; color: #ffffff !important;
+    font-weight: 700 !important; font-size: 14px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important; }
+#btn-enviar:hover { background: #0d4a2a !important; }
 .disclaimer {
-    text-align: center; font-size: 11px;
-    color: #7aad8a; padding: 8px 20px 16px; font-weight: 500;
+    text-align: center; font-size: 11px; color: #7aad8a;
+    padding: 8px 20px 16px; font-weight: 500;
 }
 footer { display: none !important; }
 """
@@ -207,14 +159,6 @@ def responder(mensaje, historial):
     historial.append((mensaje, respuesta))
     return historial, ""
 
-def bienvenida():
-    return [(
-        None,
-        "👋 ¡Hola! Soy el Asistente Virtual Tributario de la Municipalidad "
-        "Distrital de Pangoa. Puedo ayudarte con consultas sobre pagos, deudas, "
-        "fraccionamientos, plazos y más. ¿En qué te puedo ayudar hoy?"
-    )]
-
 chips_html = (
     '<div class="sugerencias-wrap">'
     '<div class="sugerencias-label">Preguntas frecuentes</div>'
@@ -224,8 +168,7 @@ for s in SUGERENCIAS:
     chips_html += (
         f'<button class="chip" onclick="(function(){{'
         f'var ta=document.querySelector(\'textarea\');'
-        f'ta.value=\'{s}\';'
-        f'ta.dispatchEvent(new Event(\'input\',{{bubbles:true}}));'
+        f'if(ta){{ta.value=\'{s}\';ta.dispatchEvent(new Event(\'input\',{{bubbles:true}}));}}'
         f'}})()\">{s}</button>'
     )
 chips_html += '</div></div><div class="divider"></div>'
@@ -234,14 +177,9 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
 
     gr.HTML("""
     <div class="chat-header">
-        <div class="header-badge">
-            <span class="header-dot"></span>En línea
-        </div>
+        <div class="header-badge"><span class="header-dot"></span>En línea</div>
         <div class="header-title">🏛️ Asistente Tributario Virtual</div>
-        <div class="header-sub">
-            Municipalidad Distrital de Pangoa ·
-            Subgerencia de Rentas y Orientación Tributaria
-        </div>
+        <div class="header-sub">Municipalidad Distrital de Pangoa · Subgerencia de Rentas y Orientación Tributaria</div>
     </div>
     """)
 
@@ -254,7 +192,7 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
             placeholder="Escribe tu consulta tributaria aquí...",
             show_label=False, lines=1, scale=8, container=False,
         )
-        btn = gr.Button("Enviar →", scale=2, variant="primary", elem_id="btn-enviar")
+        btn = gr.Button("Enviar →", scale=2, elem_id="btn-enviar")
 
     gr.HTML("""
     <div class="disclaimer">
@@ -263,14 +201,19 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
     </div>
     """)
 
+    # Mensaje de bienvenida
+    demo.load(
+        fn=lambda: [(None, "👋 ¡Hola! Soy el Asistente Virtual Tributario de la Municipalidad Distrital de Pangoa. Puedo ayudarte con consultas sobre pagos, deudas, fraccionamientos, plazos y más. ¿En qué te puedo ayudar hoy?")],
+        outputs=[chatbot],
+    )
+
     btn.click(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
     txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
-    demo.load(fn=bienvenida, outputs=[chatbot])
 
-# ── Render: leer el puerto que Render asigna automáticamente ──────────────────
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 7860))
+    port = int(os.environ.get("PORT", 10000))
     demo.launch(
         server_name="0.0.0.0",
         server_port=port,
+        show_error=True,
     )
