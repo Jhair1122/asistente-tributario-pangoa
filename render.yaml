@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: asistente-tributario-pangoa-1
+    name: asistente-tributario-pangoa
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
