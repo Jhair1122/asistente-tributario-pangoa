@@ -6,6 +6,8 @@ import os
 import joblib
 import numpy as np
 
+print("Iniciando app...")
+
 UMBRAL_CONFIANZA = 0.50
 
 modelo        = joblib.load("modelo_nlp.pkl")     if os.path.exists("modelo_nlp.pkl")     else None
@@ -297,7 +299,9 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
     txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
     demo.load(fn=bienvenida, outputs=[chatbot])
 
+print("Antes de lanzar Gradio")
+
 if __name__ == "__main__":
     import os as _os
-    port = int(_os.environ.get("PORT", 7860))
+    port = int(_os.environ.get("PORT", 70000))
     demo.launch(server_name="0.0.0.0", server_port=port)
