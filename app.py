@@ -15,10 +15,8 @@ label_encoder = joblib.load("label_encoder.pkl") if os.path.exists("label_encode
 if os.path.exists("dataset_respuestas.json"):
     with open("dataset_respuestas.json", "r", encoding="utf-8") as f:
         dataset = json.load(f)
-        dataset_map = {item["categoria"]: item["respuesta"] for item in dataset}
 else:
     dataset = []
-    dataset_map = {}
 
 SUGERENCIAS = [
     "¿Cómo pago mi impuesto predial?",
@@ -40,47 +38,30 @@ def limpiar_texto(texto):
 def predecir_respuesta(pregunta_usuario):
     if not pregunta_usuario or not pregunta_usuario.strip():
         return None
-
     pregunta_limpia = limpiar_texto(pregunta_usuario)
-
     if modelo is None or vectorizer is None or label_encoder is None:
-        return "⚠️ El modelo aún no está disponible."
-
+        return "⚠️ El modelo aún no está disponible. Verifica que los archivos .pkl estén en el repositorio."
     try:
-        X = vectorizer.transform([pregunta_limpia])
-
-        # ⚡ MÁS RÁPIDO
-        categoria_enc = modelo.predict(X)[0]
-
-        # ⚡ SOLO si necesitas confianza
-        if hasattr(modelo, "predict_proba"):
-            proba = modelo.predict_proba(X)[0]
-            confianza = float(np.max(proba))
-        else:
-            confianza = 1.0
-
-        categoria = label_encoder.inverse_transform([categoria_enc])[0]
-
+        X             = vectorizer.transform([pregunta_limpia])
+        proba         = modelo.predict_proba(X)[0]
+        confianza     = float(np.max(proba))
+        categoria_enc = int(np.argmax(proba))
+        categoria     = label_encoder.inverse_transform([categoria_enc])[0]
         if confianza < UMBRAL_CONFIANZA:
             return (
                 "🤔 No estoy completamente seguro de tu consulta.\n"
-                "Intenta reformularla.\n\n"
+                "¿Podrías reformularla o dar más detalles?\n\n"
                 "Ejemplos:\n"
                 "- ¿Cuánto debo pagar?\n"
                 "- ¿Cómo pago mi impuesto?\n"
                 "- ¿Puedo fraccionar mi deuda?"
             )
-
-        # ⚡ ACCESO DIRECTO (rápido)
-        return dataset_map.get(
-            categoria,
-            "No encontré información para esa consulta."
-        )
-
+        for item in dataset:
+            if item.get("categoria") == categoria:
+                return item.get("respuesta", "No tengo información sobre eso aún.")
+        return "No encontré información para esa consulta. Le recomendamos acercarse a la Subgerencia de Rentas."
     except Exception as e:
-        return f"Error: {str(e)}"
-
-demo.queue(concurrency_count=2, max_size=10)
+        return f"Ocurrió un error al procesar su consulta: {str(e)}"
 
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -171,12 +152,10 @@ footer { display: none !important; }
 def responder(mensaje, historial):
     if not mensaje or not mensaje.strip():
         return historial, ""
-
-    historial = historial or []
-    
-    # ⚡ responde rápido
     respuesta = predecir_respuesta(mensaje)
-
+    if respuesta is None:
+        return historial, ""
+    historial = historial or []
     historial.append((mensaje, respuesta))
     return historial, ""
 
