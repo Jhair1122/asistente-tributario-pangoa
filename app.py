@@ -22,14 +22,6 @@ if os.path.exists("dataset_respuestas.json"):
 else:
     dataset = []
 
-SUGERENCIAS = [
-    "¿Cómo pago mi impuesto predial?",
-    "¿Cuánto debo pagar?",
-    "¿Puedo fraccionar mi deuda?",
-    "¿Cuáles son los horarios de atención?",
-    "¿Qué pasa si no pago a tiempo?",
-    "¿Dónde queda el área de rentas?",
-]
 
 def limpiar_texto(texto):
     texto = texto.lower().strip()
@@ -220,24 +212,6 @@ body, .gradio-container {
     50% { opacity: 0.4; transform: scale(0.75); }
 }
 
-/* ── Sugerencias ── */
-.sugerencias-wrap {
-    padding: 14px 20px 6px;
-    background: #f0f5f1;
-}
-.sugerencias-label {
-    font-size: 10px;
-    font-weight: 700;
-    color: #5a8a6a;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-.sugerencias-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-}
 .chip {
     background: #ffffff;
     border: 1px solid #c8ddd0;
