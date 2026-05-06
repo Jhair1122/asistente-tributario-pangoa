@@ -5,6 +5,7 @@ import json
 import os
 import joblib
 import numpy as np
+import matplotlib.pyplot as plt
 
 UMBRAL_CONFIANZA = 0.18
 
@@ -160,6 +161,50 @@ body, .gradio-container {
 }
 """
 
+def generar_grafico_red():
+    if modelo is None or vectorizer is None or label_encoder is None:
+        return None
+
+    entradas = len(vectorizer.get_feature_names_out())
+    capas_ocultas = modelo.hidden_layer_sizes
+
+    if isinstance(capas_ocultas, int):
+        capas_ocultas = (capas_ocultas,)
+
+    salidas = len(label_encoder.classes_)
+
+    capas = [entradas] + list(capas_ocultas) + [salidas]
+
+    fig, ax = plt.subplots(figsize=(8, 4))
+
+    for i, n_neuronas in enumerate(capas):
+        y_positions = np.linspace(0, 1, n_neuronas)
+        x = i / (len(capas) - 1)
+
+        for y in y_positions:
+            ax.scatter(x, y)
+
+        if i > 0:
+            prev_y = np.linspace(0, 1, capas[i - 1])
+            for y1 in prev_y:
+                for y2 in y_positions:
+                    ax.plot(
+                        [(i-1)/(len(capas)-1), x],
+                        [y1, y2],
+                        linewidth=0.2
+                    )
+
+    # 🔥 Etiquetas (esto sí va aquí)
+    ax.text(0, 1.05, f"Entrada\n({entradas})", ha='center')
+    ax.text(0.5, 1.05, f"Ocultas\n{capas_ocultas}", ha='center')
+    ax.text(1, 1.05, f"Salida\n({salidas})", ha='center')
+
+    ax.set_title("Arquitectura del Modelo NLP (MLP)")
+    ax.axis('off')
+
+    return fig
+    
+
 def responder(mensaje, historial):
     if not mensaje or not mensaje.strip():
         return historial, ""
@@ -191,6 +236,11 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
 
     chatbot = gr.Chatbot(label="", height=420, show_label=False, bubble_full_width=False)
 
+    # 🔥 AQUÍ VA EL GRÁFICO (BIEN UBICADO)
+    with gr.Row():
+        grafico = gr.Plot(label="Arquitectura del modelo de IA")
+
+    # INPUT
     with gr.Row():
         txt = gr.Textbox(
             placeholder="Escribe tu consulta tributaria aquí...",
@@ -205,7 +255,13 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
     </div>
     """)
 
-    # Mensaje de bienvenida
+    # 🔥 CARGA DEL GRÁFICO
+    demo.load(
+        fn=generar_grafico_red,
+        outputs=grafico
+    )
+
+    # MENSAJE INICIAL
     demo.load(
         fn=lambda: [(None, "👋 ¡Hola! Soy el Asistente Virtual Tributario de la Municipalidad Distrital de Pangoa. Puedo ayudarte con consultas sobre pagos, deudas, fraccionamientos, plazos y más. ¿En qué te puedo ayudar hoy?")],
         outputs=[chatbot],
@@ -213,7 +269,6 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
 
     btn.click(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
     txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     demo.launch(server_name="0.0.0.0", server_port=port)
