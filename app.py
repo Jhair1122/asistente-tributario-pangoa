@@ -6,7 +6,7 @@ import os
 import joblib
 import numpy as np
 
-UMBRAL_CONFIANZA = 0.55
+UMBRAL_CONFIANZA = 0.18
 
 modelo        = joblib.load("modelo_nlp.pkl")     if os.path.exists("modelo_nlp.pkl")     else None
 vectorizer    = joblib.load("vectorizer.pkl")     if os.path.exists("vectorizer.pkl")     else None
