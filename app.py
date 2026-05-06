@@ -66,31 +66,43 @@ def predecir_respuesta(pregunta_usuario):
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* BASE */
+/* RESET */
 * {
     box-sizing: border-box;
 }
 
+/* BASE */
 body, .gradio-container {
-    background: #f6f8f7 !important;
+    background: #f5f7f6 !important;
     font-family: 'Inter', sans-serif !important;
+    color: #1a2e1e !important;
 }
 
-/* CONTENEDOR CENTRAL TIPO APP */
+/* FORZAR COLOR TEXTO (CLAVE 🔥) */
+.gradio-container * {
+    color: #1a2e1e !important;
+}
+
+/* CONTENEDOR PRINCIPAL */
 .gradio-container {
     max-width: 1000px !important;
     margin: 40px auto !important;
+    background: #ffffff !important;
     border-radius: 20px;
-    background: #ffffff;
     box-shadow: 0 10px 40px rgba(0,0,0,0.08);
     overflow: hidden;
 }
 
-/* HEADER TIPO SAAS */
+/* HEADER */
 .chat-header {
     background: linear-gradient(135deg, #145c32, #1f7a45);
     padding: 25px 30px;
-    color: white;
+    color: white !important;
+}
+
+/* IMPORTANTE: evitar texto blanco invisible */
+.chat-header * {
+    color: white !important;
 }
 
 .header-title {
@@ -100,8 +112,7 @@ body, .gradio-container {
 
 .header-sub {
     font-size: 13px;
-    opacity: 0.85;
-    margin-top: 4px;
+    opacity: 0.9;
 }
 
 /* SUGERENCIAS */
@@ -115,7 +126,7 @@ body, .gradio-container {
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #4b6b57;
+    color: #4b6b57 !important;
 }
 
 .sugerencias-grid {
@@ -132,14 +143,15 @@ body, .gradio-container {
     font-size: 12px;
     cursor: pointer;
     transition: 0.2s;
+    color: #145c32 !important;
 }
 
 .chip:hover {
     background: #145c32;
-    color: white;
+    color: white !important;
 }
 
-/* CHAT CONTENEDOR */
+/* CHAT */
 .gradio-container [data-testid="chatbot"] {
     height: 360px !important;
     margin: 20px !important;
@@ -165,7 +177,7 @@ body, .gradio-container {
     padding: 8px 12px !important;
 }
 
-/* INPUT ZONA */
+/* INPUT AREA */
 .gradio-row {
     padding: 15px 20px;
     border-top: 1px solid #e5efe7;
@@ -177,6 +189,13 @@ textarea {
     border-radius: 12px !important;
     border: 1px solid #dbe8dc !important;
     padding: 10px !important;
+    color: #1a2e1e !important;
+    background: #ffffff !important;
+}
+
+/* PLACEHOLDER */
+textarea::placeholder {
+    color: #9bb5a3 !important;
 }
 
 /* BOTÓN */
@@ -195,7 +214,7 @@ textarea {
 .disclaimer {
     text-align: center;
     font-size: 11px;
-    color: #7a9b86;
+    color: #6f8f79 !important;
     padding: 10px;
 }
 
