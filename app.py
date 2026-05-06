@@ -6,7 +6,7 @@ import os
 import joblib
 import numpy as np
 
-UMBRAL_CONFIANZA = 0.1
+UMBRAL_CONFIANZA = 0.25
 
 modelo        = joblib.load("modelo_nlp.pkl")     if os.path.exists("modelo_nlp.pkl")     else None
 vectorizer    = joblib.load("vectorizer.pkl")     if os.path.exists("vectorizer.pkl")     else None
@@ -17,6 +17,15 @@ if os.path.exists("dataset_respuestas.json"):
         dataset = json.load(f)
 else:
     dataset = []
+
+SUGERENCIAS = [
+    "¿Cómo pago mi impuesto predial?",
+    "¿Cuánto debo pagar?",
+    "¿Puedo fraccionar mi deuda?",
+    "¿Cuáles son los horarios de atención?",
+    "¿Qué pasa si no pago a tiempo?",
+    "¿Dónde queda el área de rentas?",
+]
 
 def limpiar_texto(texto):
     texto = texto.lower().strip()
@@ -55,152 +64,89 @@ def predecir_respuesta(pregunta_usuario):
         return f"Ocurrió un error al procesar su consulta: {str(e)}"
 
 CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;600;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-/* Fondo general estilo Terminal/IDE Moderno expandido al 100% */
 body, .gradio-container {
-    background: #0d1117 !important; /* Color de fondo tipo GitHub Dark */
-    font-family: 'Inter', sans-serif !important;
-    min-height: 100vh !important;
-    max-width: 100% !important; /* Aquí forzamos que use toda la pantalla */
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow-x: hidden;
+    background: #f0f4f0 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    min-height: 100vh;
 }
-
-/* Cabecera Principal Animada */
+.gradio-container { max-width: 780px !important; margin: 0 auto !important; padding: 0 !important; }
 .chat-header {
-    background: linear-gradient(90deg, #052e16 0%, #065f46 50%, #052e16 100%);
-    padding: 25px 40px;
-    border-bottom: 2px solid #10b981;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    animation: glowHeader 4s infinite alternate;
+    background: linear-gradient(135deg, #0d4a2a 0%, #1a6b3c 60%, #145c32 100%);
+    padding: 28px 32px 22px; border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 24px rgba(13,74,42,0.18); position: relative; overflow: hidden;
 }
-
-@keyframes glowHeader {
-    from { box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1); }
-    to { box-shadow: 0 4px 30px rgba(16, 185, 129, 0.4); }
+.chat-header::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px; background: rgba(255,255,255,0.04); border-radius: 50%;
 }
-
 .header-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(16, 185, 129, 0.1); 
-    border: 1px solid #10b981;
-    border-radius: 4px; padding: 4px 12px; 
-    font-family: 'Fira Code', monospace;
-    font-size: 12px; color: #34d399; 
-    text-transform: uppercase; margin-bottom: 10px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 600;
+    color: #a8dbbe; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px;
 }
-
 .header-dot {
-    width: 8px; height: 8px; background: #10b981;
-    border-radius: 50%; animation: blink 1.5s infinite;
+    width: 6px; height: 6px; background: #4ade80;
+    border-radius: 50%; animation: pulse 2s infinite;
 }
-
-@keyframes blink { 
-    0%, 100% { opacity: 1; box-shadow: 0 0 10px #10b981; } 
-    50% { opacity: 0.3; box-shadow: 0 0 0 transparent; } 
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.8); }
 }
-
-.header-title { 
-    font-size: 28px; font-weight: 800; color: #ecfdf5;
-    letter-spacing: 1px;
-}
-
-.header-sub { 
-    font-size: 14px; color: #6ee7b7; font-family: 'Fira Code', monospace;
-    margin-top: 5px;
-}
-
-/* Botones de Sugerencias (Chips) con estilo de comandos */
-.sugerencias-wrap { 
-    padding: 20px 5vw; 
-    background: #0f172a;
-    border-bottom: 1px solid #1e293b;
-}
+.header-title { font-size: 22px; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+.header-sub   { font-size: 13px; color: #a8dbbe; font-weight: 500; }
+.sugerencias-wrap { padding: 16px 20px 4px; }
 .sugerencias-label {
-    font-family: 'Fira Code', monospace;
-    font-size: 12px; color: #10b981;
-    text-transform: uppercase; margin-bottom: 15px;
-    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700; color: #4a7c5a;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
 }
-.sugerencias-label::before { content: '>'; color: #34d399; font-weight: bold; }
-.sugerencias-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-
+.sugerencias-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
-    background: rgba(16, 185, 129, 0.05); border: 1px solid #059669; 
-    border-radius: 4px; padding: 10px 20px; 
-    font-size: 13px; font-family: 'Fira Code', monospace; color: #6ee7b7;
-    cursor: pointer; transition: all 0.3s ease;
-    position: relative; overflow: hidden;
+    background: #ffffff; border: 1.5px solid #c5dcc9; border-radius: 20px;
+    padding: 7px 14px; font-size: 13px; font-weight: 500; color: #145c32;
+    cursor: pointer; transition: all 0.18s ease; font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .chip:hover {
-    background: #10b981; color: #022c22; 
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
-    transform: translateY(-3px) scale(1.02);
+    background: #145c32; color: #ffffff; border-color: #145c32;
+    transform: translateY(-1px); box-shadow: 0 4px 12px rgba(20,92,50,0.2);
 }
-
-/* Contenedor del Chat expandido */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c5dcc9, transparent);
+    margin: 12px 20px;
+}
 .gradio-container [data-testid="chatbot"] {
-    background: #0d1117 !important; 
-    border: none !important;
-    margin: 0 !important;
-    padding: 20px 5vw !important;
-    height: calc(100vh - 400px) !important; /* Ajusta la altura dinámicamente */
-    min-height: 400px !important;
+    background: #ffffff !important; border: 1.5px solid #c5dcc9 !important;
+    border-radius: 16px !important; margin: 0 16px !important;
+    box-shadow: 0 2px 12px rgba(20,92,50,0.06) !important;
 }
-
-/* Área de Texto y Botón de Envío */
-.gradio-container > div > div > div > div.wrap, 
-.gradio-container > div > div > div > div > div {
-    padding: 0 5vw 20px 5vw !important;
-    background: transparent !important;
-    border: none !important;
-}
-
 .gradio-container textarea,
 .gradio-container input[type=text] {
-    background: #1e293b !important; color: #f8fafc !important;
-    border: 1px solid #334155 !important; border-radius: 8px !important;
-    font-family: 'Fira Code', monospace !important;
-    font-size: 14px !important; padding: 18px !important;
-    transition: all 0.3s ease !important;
+    background: #ffffff !important; color: #1a2e1e !important;
+    border: 1.5px solid #c5dcc9 !important; border-radius: 12px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 14px !important; padding: 10px 14px !important;
+    caret-color: #145c32 !important;
 }
+.gradio-container textarea::placeholder,
+.gradio-container input[type=text]::placeholder { color: #9ab5a0 !important; }
 .gradio-container textarea:focus,
 .gradio-container input[type=text]:focus {
-    border-color: #10b981 !important;
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2) !important; 
-    outline: none !important;
+    border-color: #145c32 !important;
+    box-shadow: 0 0 0 3px rgba(20,92,50,0.08) !important; outline: none !important;
 }
-
-#btn-enviar { 
-    background: #10b981 !important; 
-    border: none !important; border-radius: 8px !important; 
-    color: #022c22 !important; font-weight: 800 !important; 
-    font-family: 'Fira Code', monospace !important;
-    font-size: 15px !important; text-transform: uppercase !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    min-height: 58px !important;
-}
-#btn-enviar:hover { 
-    background: #34d399 !important;
-    box-shadow: 0 0 25px rgba(16, 185, 129, 0.5) !important;
-    transform: scale(1.05) !important;
-}
-
-/* Pie de página */
+#btn-enviar { background: #145c32 !important; border: none !important;
+    border-radius: 12px !important; color: #ffffff !important;
+    font-weight: 700 !important; font-size: 14px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important; }
+#btn-enviar:hover { background: #0d4a2a !important; }
 .disclaimer {
-    text-align: center; font-size: 12px; color: #475569;
-    font-family: 'Fira Code', monospace;
-    padding: 10px 0 20px 0; background: transparent;
+    text-align: center; font-size: 11px; color: #7aad8a;
+    padding: 8px 20px 16px; font-weight: 500;
 }
 footer { display: none !important; }
-.divider { display: none; }
 """
 
 def responder(mensaje, historial):
@@ -265,5 +211,7 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
     txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
 
 if __name__ == "__main__":
+    import uvicorn
     port = int(os.environ.get("PORT", 10000))
-    demo.launch(server_name="0.0.0.0", server_port=port)
+    app = demo.app
+    uvicorn.run(app, host="0.0.0.0", port=port)
