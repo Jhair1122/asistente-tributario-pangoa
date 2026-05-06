@@ -16,6 +16,136 @@
     ]
   },
 {
+  "categoria": "evasion_deuda",
+  "pregunta": "¿Qué pasa si intento evitar pagar mi deuda?",
+  "respuesta": "Si intenta evadir el pago de sus deudas tributarias, estas seguirán generando intereses y podrían derivar en un proceso de cobranza coactiva por parte de la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "si huyo de mi deuda que pasa",
+    "que pasa si no quiero pagar",
+    "puedo evitar pagar impuestos",
+    "si me escondo de la deuda",
+    "que pasa si ignoro mi deuda",
+    "no pagar deuda consecuencias",
+    "evadir impuestos municipalidad",
+    "si no pago nunca que pasa",
+    "puedo dejar de pagar mi deuda",
+    "si me niego a pagar impuestos",
+    "huir de deudas pangoa",
+    "no quiero pagar mi predial",
+    "puedo escaparme de la deuda"
+  ]
+},
+{
+  "categoria": "recomendacion_pago",
+  "pregunta": "¿Qué debo hacer si no puedo pagar?",
+  "respuesta": "Si tiene dificultades para pagar su deuda, se recomienda acercarse a la Subgerencia de Rentas de la Municipalidad Distrital de Pangoa para evaluar opciones como el fraccionamiento o facilidades de pago.",
+  "variantes": [
+    "no tengo dinero para pagar",
+    "no me alcanza para pagar",
+    "que hago si no puedo pagar",
+    "no puedo pagar mi deuda",
+    "no tengo plata para impuestos",
+    "como soluciono mi deuda",
+    "que opciones tengo para pagar",
+    "ayuda con mi deuda",
+    "no puedo pagar completo",
+    "que hago con mi deuda"
+  ]
+},
+{
+  "categoria": "intencion_usuario_difusa",
+  "pregunta": "Consulta ambigua",
+  "respuesta": "Puedo ayudarte con temas de impuestos, deudas, pagos y trámites en la Municipalidad Distrital de Pangoa. Por favor, indícame más detalles de tu consulta.",
+  "variantes": [
+    "y ahora",
+    "entonces que hago",
+    "y luego",
+    "que sigue",
+    "como asi",
+    "y eso",
+    "explícame mejor",
+    "ok y ahora",
+    "que hago ahora",
+    "y que pasaria"
+  ]
+},
+{
+  "categoria": "consecuencias_legales",
+  "pregunta": "¿Hay consecuencias legales por no pagar?",
+  "respuesta": "Sí, el incumplimiento del pago de tributos puede generar intereses, multas y procesos de cobranza coactiva por parte de la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "hay problemas legales por no pagar",
+    "me pueden denunciar por deuda",
+    "problemas legales impuestos",
+    "me pueden embargar por deuda",
+    "que pasa legalmente si no pago",
+    "puedo tener problemas por no pagar",
+    "riesgos de no pagar impuestos",
+    "consecuencias legales deuda municipal"
+  ]
+},
+{
+  "categoria": "orientacion_preventiva",
+  "pregunta": "¿Cómo evito problemas con mis impuestos?",
+  "respuesta": "Para evitar problemas, se recomienda pagar sus tributos a tiempo o solicitar facilidades de pago en la Subgerencia de Rentas de la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "como evitar deudas",
+    "como no tener problemas con impuestos",
+    "como estar al dia con predial",
+    "evitar multas municipalidad",
+    "no quiero tener deuda",
+    "como prevenir deuda",
+    "como pagar a tiempo",
+    "evitar intereses impuestos"
+  ]
+},
+{
+  "categoria": "lenguaje_informal",
+  "pregunta": "Consulta en lenguaje informal",
+  "respuesta": "Puedo ayudarte con información sobre pagos, deudas y trámites en la Municipalidad Distrital de Pangoa. Indícame tu consulta de forma más clara.",
+  "variantes": [
+    "hla",
+    "ola",
+    "k haces",
+    "q onda",
+    "dime algo",
+    "info",
+    "ayudame bro",
+    "mano ayuda",
+    "causa una consulta",
+    "bro necesito ayuda",
+    "oe una pregunta"
+  ]
+},
+{
+  "categoria": "explicacion_deuda",
+  "pregunta": "¿Por qué tengo deuda?",
+  "respuesta": "La deuda tributaria se genera cuando no se realiza el pago de impuestos como el predial dentro de los plazos establecidos por la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "por que debo impuestos",
+    "de donde sale mi deuda",
+    "por que tengo deuda predial",
+    "como se genera la deuda",
+    "porque me sale deuda",
+    "deuda municipal porque",
+    "razon de deuda impuestos"
+  ]
+},
+{
+  "categoria": "consulta_multas_general",
+  "pregunta": "¿Por qué me cobran intereses?",
+  "respuesta": "Los intereses se generan cuando no se realiza el pago de tributos dentro del plazo establecido por la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "porque sube mi deuda",
+    "por que me cobran mas",
+    "intereses predial",
+    "porque aumenta la deuda",
+    "mora impuestos",
+    "recargos deuda municipal",
+    "intereses por atraso"
+  ]
+},
+{
   "categoria": "fuera_contexto_controlado",
   "pregunta": "Pregunta fuera del tema",
   "respuesta": "Puedo ayudarte únicamente con consultas relacionadas a la Municipalidad Distrital de Pangoa, especialmente sobre impuestos, deudas, pagos y trámites tributarios.",
