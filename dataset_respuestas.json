@@ -210,6 +210,165 @@
       "ubicación de la municipalidad"
     ]
   },
+{
+  "categoria": "constancia_no_adeudo",
+  "pregunta": "¿Cómo obtengo una constancia de no adeudo?",
+  "respuesta": "Puede solicitar la constancia de no adeudo en la Municipalidad Distrital de Pangoa. Este documento certifica que no tiene deudas tributarias pendientes.",
+  "variantes": [
+    "constancia de no adeudo",
+    "certificado de no deuda",
+    "no debo nada papel",
+    "como sacar constancia",
+    "quiero constancia",
+    "documento de no deuda",
+    "papel de no adeudo",
+    "comprobante de no deuda",
+    "constancia municipal deuda",
+    "certificado tributario",
+    "constancia deuda cero",
+    "como saco constancia pangoa"
+  ]
+},
+{
+  "categoria": "predio_inscripcion",
+  "pregunta": "¿Cómo inscribo mi predio?",
+  "respuesta": "Debe registrar su predio en la Municipalidad Distrital de Pangoa presentando los documentos correspondientes del inmueble.",
+  "variantes": [
+    "inscribir predio",
+    "registrar casa",
+    "registrar terreno",
+    "como registrar propiedad",
+    "inscribir inmueble",
+    "poner casa a mi nombre",
+    "registro predial",
+    "inscripcion predio pangoa",
+    "registrar propiedad municipalidad",
+    "quiero registrar mi casa"
+  ]
+},
+{
+  "categoria": "predio_modificacion",
+  "pregunta": "¿Cómo modifico los datos de mi predio?",
+  "respuesta": "Debe acercarse a la Municipalidad Distrital de Pangoa para actualizar o modificar los datos de su predio si hubo cambios en su propiedad.",
+  "variantes": [
+    "modificar predio",
+    "actualizar datos casa",
+    "cambiar datos propiedad",
+    "modificar inmueble",
+    "actualizar predio",
+    "datos incorrectos predio",
+    "cambiar informacion casa",
+    "actualizar autoavaluo",
+    "editar predio"
+  ]
+},
+{
+  "categoria": "prescripcion_deuda",
+  "pregunta": "¿Puedo eliminar una deuda antigua?",
+  "respuesta": "Puede solicitar la prescripción de deuda en la Municipalidad Distrital de Pangoa si esta tiene varios años de antigüedad.",
+  "variantes": [
+    "eliminar deuda antigua",
+    "borrar deuda vieja",
+    "prescripcion deuda",
+    "deuda de años atras",
+    "quitar deuda antigua",
+    "cancelar deuda vieja",
+    "ya no pagar deuda antigua",
+    "deuda antigua impuestos",
+    "deuda vieja pangoa"
+  ]
+},
+{
+  "categoria": "beneficio_pensionista",
+  "pregunta": "¿Hay beneficios para adultos mayores?",
+  "respuesta": "Sí, los adultos mayores pueden acceder a beneficios y deducciones en el impuesto predial según normativa vigente.",
+  "variantes": [
+    "beneficio adulto mayor",
+    "descuento pensionista",
+    "rebaja predial",
+    "soy pensionista tengo descuento",
+    "beneficio tercera edad",
+    "ayuda adulto mayor impuestos",
+    "descuento por edad",
+    "rebaja impuestos pangoa"
+  ]
+},
+{
+  "categoria": "mesa_partes",
+  "pregunta": "¿Cómo presento un trámite?",
+  "respuesta": "Puede presentar documentos en mesa de partes de la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "mesa de partes",
+    "presentar documentos",
+    "ingresar solicitud",
+    "donde dejo documentos",
+    "entregar papeles",
+    "registro tramite",
+    "presentar expediente",
+    "ingresar documento"
+  ]
+},
+{
+  "categoria": "seguimiento_tramite",
+  "pregunta": "¿Cómo hago seguimiento a mi trámite?",
+  "respuesta": "Puede consultar el estado de su trámite en la Municipalidad Distrital de Pangoa mediante los canales habilitados.",
+  "variantes": [
+    "ver mi tramite",
+    "seguimiento tramite",
+    "estado solicitud",
+    "como va mi tramite",
+    "consultar expediente",
+    "mi tramite en que esta",
+    "estado de tramite",
+    "seguimiento pangoa"
+  ]
+},
+{
+  "categoria": "tupa_info",
+  "pregunta": "¿Dónde veo los requisitos de trámites?",
+  "respuesta": "Puede revisar los requisitos en el TUPA de la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "requisitos tramites",
+    "tupa pangoa",
+    "documentos necesarios",
+    "que necesito para tramites",
+    "lista requisitos",
+    "informacion tramites",
+    "requisitos municipalidad",
+    "ver requisitos"
+  ]
+},
+{
+  "categoria": "direccion_exacta",
+  "pregunta": "¿Cuál es la dirección de la municipalidad?",
+  "respuesta": "La Municipalidad Distrital de Pangoa se ubica en Calle 7 de Junio N° 641.",
+  "variantes": [
+    "direccion pangoa",
+    "donde queda municipalidad",
+    "ubicacion exacta",
+    "direccion rentas",
+    "como llegar pangoa",
+    "ubicacion municipalidad",
+    "direccion oficina pangoa"
+  ]
+},
+{
+  "categoria": "fallback_inteligente",
+  "pregunta": "Pregunta fuera de contexto",
+  "respuesta": "Solo puedo ayudarte con consultas tributarias y servicios de la Municipalidad Distrital de Pangoa. Intenta preguntar sobre pagos, deudas o trámites.",
+  "variantes": [
+    "que es el amor",
+    "clima hoy",
+    "juegos",
+    "xd",
+    "random",
+    "hola que haces",
+    "no entiendo",
+    "cualquier cosa",
+    "tema diferente",
+    "habla de otra cosa"
+  ]
+},
   {
     "categoria": "arbitrios_info",
     "pregunta": "¿Qué son los arbitrios municipales?",
