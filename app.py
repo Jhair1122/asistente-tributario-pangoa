@@ -5,7 +5,6 @@ import json
 import os
 import joblib
 import numpy as np
-import time
 
 UMBRAL_CONFIANZA = 0.25
 
@@ -67,114 +66,129 @@ def predecir_respuesta(pregunta_usuario):
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body, .gradio-container {
+    background: #f3f6f4 !important;
     font-family: 'Inter', sans-serif !important;
 }
 
-/* 🌞 MODO CLARO */
-body.light {
-    background: #f5f7f6;
-}
-
-/* 🌙 MODO OSCURO */
-body.dark {
-    background: #0f172a;
-}
-
-/* CONTENEDOR */
+/* CONTENEDOR CENTRAL */
 .gradio-container {
     max-width: 900px !important;
-    margin: 30px auto !important;
-    border-radius: 18px;
-    overflow: hidden;
+    margin: auto !important;
 }
 
-/* HEADER */
+/* HEADER ESTILO APP */
 .chat-header {
-    padding: 20px;
-    background: linear-gradient(135deg, #145c32, #1f7a45);
+    background: linear-gradient(135deg, #0d4a2a, #1a6b3c);
+    padding: 20px 25px;
+    border-radius: 0 0 20px 20px;
     color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* SUGERENCIAS */
+.sugerencias-wrap {
+    padding: 15px 20px;
+}
+
+.sugerencias-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    background: #fff;
+    border: 1px solid #d0e2d3;
+    border-radius: 20px;
+    padding: 7px 14px;
+    font-size: 12px;
+    color: #145c32;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chip:hover {
+    background: #145c32;
+    color: #fff;
 }
 
 /* CHAT */
-[data-testid="chatbot"] {
-    height: 360px !important;
-    margin: 15px !important;
-    border-radius: 12px;
-    padding: 10px;
-    overflow-y: auto;
+.gradio-container [data-testid="chatbot"] {
+    background: #ffffff !important;
+    margin: 10px 20px !important;
+    border-radius: 16px !important;
+    height: 420px !important;
+    border: 1px solid #e2e8e3 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    padding: 15px;
 }
 
-/* 💬 BURBUJAS CLARAS */
-.message.user {
-    background: #e8f5ec !important;
-    color: #145c32 !important;
-    border-radius: 12px;
-    padding: 8px 12px;
+/* 🔥 BURBUJAS (SIMULADAS) */
+.gradio-container [data-testid="chatbot"] .message {
+    padding: 10px 14px !important;
+    border-radius: 14px !important;
+    margin-bottom: 8px !important;
+    max-width: 75%;
 }
 
-.message.bot {
+/* USUARIO (DERECHA) */
+.gradio-container [data-testid="chatbot"] .message.user {
+    background: #145c32 !important;
+    color: white !important;
+    margin-left: auto !important;
+}
+
+/* BOT (IZQUIERDA) */
+.gradio-container [data-testid="chatbot"] .message.bot {
     background: #f1f5f2 !important;
     color: #1a2e1e !important;
-    border-radius: 12px;
-    padding: 8px 12px;
+}
+
+/* INPUT COMO APP */
+.gradio-row {
+    margin: 10px 20px;
 }
 
 /* INPUT */
-textarea {
-    border-radius: 12px !important;
+.gradio-container textarea {
+    border-radius: 20px !important;
+    padding: 12px 16px !important;
+    border: 1px solid #d0e2d3 !important;
 }
 
-/* BOTÓN */
+/* BOTÓN REDONDO */
 #btn-enviar {
-    border-radius: 12px !important;
+    border-radius: 20px !important;
     background: #145c32 !important;
     color: white !important;
+    font-weight: 600;
 }
 
-/* DARK MODE OVERRIDE */
-body.dark .gradio-container {
-    background: #111827 !important;
+#btn-enviar:hover {
+    background: #0d4a2a !important;
 }
 
-body.dark [data-testid="chatbot"] {
-    background: #1f2937 !important;
+/* DISCLAIMER */
+.disclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: #7a9c86;
+    padding: 10px;
 }
-
-body.dark .message.bot {
-    background: #374151 !important;
-    color: #e5e7eb !important;
-}
-
-body.dark .message.user {
-    background: #064e3b !important;
-    color: #d1fae5 !important;
-}
-
 """
 
 def responder(mensaje, historial):
     if not mensaje or not mensaje.strip():
         return historial, ""
-
-    historial = historial or []
-
-    # 👤 usuario escribe
-    historial.append((mensaje, "✍️ Escribiendo..."))
-
-    yield historial, ""
-
-    # 🧠 delay realista
-    time.sleep(1.2)
-
     respuesta = predecir_respuesta(mensaje)
-
-    # reemplazar mensaje temporal
-    historial[-1] = (mensaje, respuesta)
-
-    yield historial, ""
+    if respuesta is None:
+        return historial, ""
+    historial = historial or []
+    historial.append((mensaje, respuesta))
+    return historial, ""
 
 chips_html = (
     '<div class="sugerencias-wrap">'
@@ -224,8 +238,8 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
         outputs=[chatbot],
     )
 
-    btn.click(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt], queue=True)
-    txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt], queue=True)
+    btn.click(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
+    txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
