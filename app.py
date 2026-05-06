@@ -64,33 +64,58 @@ def predecir_respuesta(pregunta_usuario):
         return f"Ocurrió un error al procesar su consulta: {str(e)}"
 
 CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* BASE */
+* {
+    box-sizing: border-box;
+}
 
 body, .gradio-container {
-    background: #f3f6f4 !important;
+    background: #f6f8f7 !important;
     font-family: 'Inter', sans-serif !important;
 }
 
-/* CONTENEDOR CENTRAL */
+/* CONTENEDOR CENTRAL TIPO APP */
 .gradio-container {
-    max-width: 900px !important;
-    margin: auto !important;
+    max-width: 1000px !important;
+    margin: 40px auto !important;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
 }
 
-/* HEADER ESTILO APP */
+/* HEADER TIPO SAAS */
 .chat-header {
-    background: linear-gradient(135deg, #0d4a2a, #1a6b3c);
-    padding: 20px 25px;
-    border-radius: 0 0 20px 20px;
+    background: linear-gradient(135deg, #145c32, #1f7a45);
+    padding: 25px 30px;
     color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header-sub {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-top: 4px;
 }
 
 /* SUGERENCIAS */
 .sugerencias-wrap {
-    padding: 15px 20px;
+    padding: 15px 25px;
+    background: #f9fbf9;
+    border-bottom: 1px solid #e5efe7;
+}
+
+.sugerencias-label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #4b6b57;
 }
 
 .sugerencias-grid {
@@ -100,70 +125,65 @@ body, .gradio-container {
 }
 
 .chip {
-    background: #fff;
-    border: 1px solid #d0e2d3;
+    background: white;
+    border: 1px solid #dbe8dc;
     border-radius: 20px;
-    padding: 7px 14px;
+    padding: 6px 12px;
     font-size: 12px;
-    color: #145c32;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .chip:hover {
     background: #145c32;
-    color: #fff;
+    color: white;
 }
 
-/* CHAT */
+/* CHAT CONTENEDOR */
 .gradio-container [data-testid="chatbot"] {
-    background: #ffffff !important;
-    margin: 10px 20px !important;
-    border-radius: 16px !important;
-    height: 420px !important;
-    border: 1px solid #e2e8e3 !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    padding: 15px;
-}
-
-/* 🔥 BURBUJAS (SIMULADAS) */
-.gradio-container [data-testid="chatbot"] .message {
-    padding: 10px 14px !important;
+    height: 360px !important;
+    margin: 20px !important;
     border-radius: 14px !important;
-    margin-bottom: 8px !important;
-    max-width: 75%;
+    border: 1px solid #e3ece5 !important;
+    padding: 15px;
+    background: #ffffff !important;
+    overflow-y: auto !important;
 }
 
-/* USUARIO (DERECHA) */
-.gradio-container [data-testid="chatbot"] .message.user {
+/* MENSAJES */
+.message.user {
     background: #145c32 !important;
     color: white !important;
-    margin-left: auto !important;
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
 }
 
-/* BOT (IZQUIERDA) */
-.gradio-container [data-testid="chatbot"] .message.bot {
+.message.bot {
     background: #f1f5f2 !important;
     color: #1a2e1e !important;
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
 }
 
-/* INPUT COMO APP */
+/* INPUT ZONA */
 .gradio-row {
-    margin: 10px 20px;
+    padding: 15px 20px;
+    border-top: 1px solid #e5efe7;
+    background: #ffffff;
 }
 
 /* INPUT */
-.gradio-container textarea {
-    border-radius: 20px !important;
-    padding: 12px 16px !important;
-    border: 1px solid #d0e2d3 !important;
+textarea {
+    border-radius: 12px !important;
+    border: 1px solid #dbe8dc !important;
+    padding: 10px !important;
 }
 
-/* BOTÓN REDONDO */
+/* BOTÓN */
 #btn-enviar {
-    border-radius: 20px !important;
     background: #145c32 !important;
     color: white !important;
+    border-radius: 12px !important;
     font-weight: 600;
 }
 
@@ -175,8 +195,17 @@ body, .gradio-container {
 .disclaimer {
     text-align: center;
     font-size: 11px;
-    color: #7a9c86;
+    color: #7a9b86;
     padding: 10px;
+}
+
+/* SCROLL */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: #c5dcc9;
+    border-radius: 10px;
 }
 """
 
