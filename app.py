@@ -18,15 +18,6 @@ if os.path.exists("dataset_respuestas.json"):
 else:
     dataset = []
 
-SUGERENCIAS = [
-    "¿Cómo pago mi impuesto predial?",
-    "¿Cuánto debo pagar?",
-    "¿Puedo fraccionar mi deuda?",
-    "¿Cuáles son los horarios de atención?",
-    "¿Qué pasa si no pago a tiempo?",
-    "¿Dónde queda el área de rentas?",
-]
-
 def limpiar_texto(texto):
     texto = texto.lower().strip()
     texto = unicodedata.normalize("NFD", texto)
