@@ -15,6 +15,328 @@
       "formas para pagar impuestos municipales"
     ]
   },
+{
+  "categoria": "fuera_contexto_controlado",
+  "pregunta": "Pregunta fuera del tema",
+  "respuesta": "Puedo ayudarte únicamente con consultas relacionadas a la Municipalidad Distrital de Pangoa, especialmente sobre impuestos, deudas, pagos y trámites tributarios.",
+  "variantes": [
+    "que es el amor",
+    "quien eres",
+    "cuantos años tienes",
+    "hablame de futbol",
+    "clima hoy",
+    "cuanto es 2+2",
+    "que haces",
+    "cuentame un chiste",
+    "juego gratis",
+    "recomienda algo",
+    "xd",
+    "hola que haces",
+    "random",
+    "no tiene sentido",
+    "habla de otra cosa",
+    "tema diferente",
+    "quiero otra cosa",
+    "esto no es de impuestos",
+    "solo queria hablar",
+    "eres humano"
+  ]
+},
+{
+  "categoria": "consulta_general_usuario",
+  "pregunta": "Quiero información",
+  "respuesta": "Puedo brindarte información sobre pagos, deudas, impuestos prediales y trámites en la Municipalidad Distrital de Pangoa. Indícame tu consulta.",
+  "variantes": [
+    "quiero saber algo",
+    "necesito informacion",
+    "me ayudas",
+    "tengo una duda",
+    "consulta",
+    "puedes ayudarme",
+    "quiero consultar",
+    "dame informacion",
+    "informacion municipal",
+    "orientame",
+    "no se que hacer",
+    "ayuda por favor"
+  ]
+},
+{
+  "categoria": "error_usuario",
+  "pregunta": "No sé cómo preguntar",
+  "respuesta": "Puedes hacer preguntas sobre pagos, deudas, impuestos o trámites de la Municipalidad Distrital de Pangoa. Intenta ser más específico.",
+  "variantes": [
+    "no se que decir",
+    "no se como preguntar",
+    "me equivoque",
+    "no entiendo nada",
+    "explicame",
+    "no me queda claro",
+    "estoy perdido",
+    "confundido",
+    "ayuda no entiendo",
+    "no comprendo"
+  ]
+},
+{
+  "categoria": "saludo_extendido",
+  "pregunta": "Hola",
+  "respuesta": "¡Hola! Soy el asistente de la Municipalidad Distrital de Pangoa. Puedo ayudarte con consultas tributarias, pagos, deudas y trámites.",
+  "variantes": [
+    "hola",
+    "hola buenas",
+    "buenas",
+    "buenos dias",
+    "buenas tardes",
+    "buenas noches",
+    "holaaa",
+    "holi",
+    "hey",
+    "que tal",
+    "ola",
+    "saludos",
+    "hello",
+    "hi"
+  ]
+},
+{
+  "categoria": "despedida_extendida",
+  "pregunta": "Adiós",
+  "respuesta": "¡Gracias por consultar! Si necesitas más información sobre la Municipalidad Distrital de Pangoa, aquí estaré para ayudarte.",
+  "variantes": [
+    "adios",
+    "bye",
+    "hasta luego",
+    "nos vemos",
+    "gracias bye",
+    "ok adios",
+    "listo gracias",
+    "chao",
+    "hasta pronto"
+  ]
+},
+{
+  "categoria": "confirmacion",
+  "pregunta": "Confirmación",
+  "respuesta": "Si necesitas más detalles sobre pagos, deudas o trámites en la Municipalidad Distrital de Pangoa, puedes indicarme tu consulta.",
+  "variantes": [
+    "ok",
+    "okey",
+    "vale",
+    "listo",
+    "entendido",
+    "ya",
+    "perfecto",
+    "bien",
+    "correcto",
+    "esta bien"
+  ]
+},
+{
+  "categoria": "negacion",
+  "pregunta": "No",
+  "respuesta": "Está bien. Si tienes alguna consulta sobre la Municipalidad Distrital de Pangoa, puedes preguntarme en cualquier momento.",
+  "variantes": [
+    "no",
+    "nop",
+    "no gracias",
+    "ahorita no",
+    "luego",
+    "no quiero",
+    "no deseo",
+    "no por ahora"
+  ]
+},
+{
+  "categoria": "consulta_deuda_general",
+  "pregunta": "Quiero saber mi deuda",
+  "respuesta": "Para conocer su deuda tributaria, debe acercarse a la Subgerencia de Rentas de la Municipalidad Distrital de Pangoa con su DNI o código de contribuyente.",
+  "variantes": [
+    "quiero ver mi deuda",
+    "tengo deuda",
+    "debo algo",
+    "cuanto debo en total",
+    "mi deuda total",
+    "deuda municipal",
+    "deuda predial",
+    "consultar deuda pangoa",
+    "ver deuda impuestos",
+    "deuda actual"
+  ]
+},
+{
+  "categoria": "consulta_pago_general",
+  "pregunta": "Quiero pagar",
+  "respuesta": "Puede realizar el pago de sus tributos en la Municipalidad Distrital de Pangoa acercándose a caja con su DNI o código de contribuyente.",
+  "variantes": [
+    "quiero pagar",
+    "pagar deuda",
+    "pagar impuesto",
+    "donde pago",
+    "como pagar deuda",
+    "quiero cancelar",
+    "hacer pago",
+    "pagar predial",
+    "cancelar deuda"
+  ]
+},
+{
+  "categoria": "consulta_ubicacion_general",
+  "pregunta": "¿Dónde está la municipalidad?",
+  "respuesta": "La Municipalidad Distrital de Pangoa se encuentra en su sede principal. Puede acercarse para realizar consultas o trámites tributarios.",
+  "variantes": [
+    "donde queda pangoa municipalidad",
+    "ubicacion municipalidad",
+    "direccion pangoa",
+    "como llegar municipalidad",
+    "donde esta la muni",
+    "lugar municipalidad",
+    "ubicacion exacta pangoa"
+  ]
+},
+{
+  "categoria": "contacto_municipalidad",
+  "pregunta": "¿Cómo me contacto con la municipalidad?",
+  "respuesta": "Puede comunicarse con la Municipalidad Distrital de Pangoa mediante sus canales oficiales publicados en la web institucional o acercándose directamente a sus oficinas.",
+  "variantes": [
+    "telefono municipalidad pangoa",
+    "numero de contacto pangoa",
+    "como llamar a la muni",
+    "correo municipalidad",
+    "email pangoa",
+    "contacto rentas",
+    "como hablar con la municipalidad",
+    "atencion cliente pangoa",
+    "soporte municipalidad"
+  ]
+},
+{
+  "categoria": "tramites_online",
+  "pregunta": "¿Puedo hacer trámites en línea?",
+  "respuesta": "Algunos servicios pueden estar disponibles en línea a través de la plataforma del Estado. También puede realizar consultas desde la web oficial de la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "tramites por internet",
+    "puedo hacer tramites online",
+    "tramites virtuales",
+    "pago online municipalidad",
+    "servicios digitales pangoa",
+    "tramite desde casa",
+    "hacer tramite virtual",
+    "municipalidad online"
+  ]
+},
+{
+  "categoria": "impuesto_predial_info",
+  "pregunta": "¿Qué es el impuesto predial?",
+  "respuesta": "El impuesto predial es un tributo municipal que deben pagar los propietarios de inmuebles y se calcula en función del valor del predio.",
+  "variantes": [
+    "que es predial",
+    "impuesto de casa",
+    "impuesto de terreno",
+    "que impuesto pago por mi casa",
+    "tributo predial",
+    "explicacion predial",
+    "para que sirve el impuesto predial"
+  ]
+},
+{
+  "categoria": "orientacion_general",
+  "pregunta": "Necesito orientación tributaria",
+  "respuesta": "Puede recibir orientación en la Subgerencia de Rentas de la Municipalidad Distrital de Pangoa, donde le brindarán información sobre sus obligaciones tributarias.",
+  "variantes": [
+    "necesito ayuda con impuestos",
+    "orientacion impuestos",
+    "ayuda tributaria",
+    "asesoria municipal",
+    "consulta tributaria",
+    "no entiendo mis impuestos",
+    "explicame mi deuda",
+    "ayuda con predial"
+  ]
+},
+{
+  "categoria": "reclamo_tributario",
+  "pregunta": "¿Cómo hago un reclamo tributario?",
+  "respuesta": "Puede presentar un reclamo tributario en mesa de partes de la Municipalidad Distrital de Pangoa adjuntando la documentación correspondiente.",
+  "variantes": [
+    "reclamar impuesto",
+    "no estoy de acuerdo con mi deuda",
+    "error en mi impuesto",
+    "reclamo predial",
+    "queja tributaria",
+    "apelar deuda",
+    "problema con mi impuesto"
+  ]
+},
+{
+  "categoria": "actualizacion_datos",
+  "pregunta": "¿Cómo actualizo mis datos?",
+  "respuesta": "Debe acercarse a la Municipalidad Distrital de Pangoa con su DNI para actualizar sus datos como contribuyente.",
+  "variantes": [
+    "actualizar datos personales",
+    "cambiar datos en municipalidad",
+    "datos incorrectos",
+    "editar mis datos",
+    "actualizar informacion",
+    "cambiar direccion"
+  ]
+},
+{
+  "categoria": "consulta_servicios",
+  "pregunta": "¿Qué servicios ofrece la municipalidad?",
+  "respuesta": "La Municipalidad Distrital de Pangoa ofrece diversos servicios a la ciudadanía, incluyendo trámites administrativos, orientación tributaria y gestión de servicios públicos.",
+  "variantes": [
+    "que hace la municipalidad",
+    "servicios pangoa",
+    "que tramites hay",
+    "que puedo hacer en la municipalidad",
+    "servicios disponibles",
+    "atencion municipal"
+  ]
+},
+{
+  "categoria": "respuesta_emocional",
+  "pregunta": "¿Cómo estás?",
+  "respuesta": "¡Estoy aquí para ayudarte! Puedes consultarme sobre pagos, deudas o trámites en la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "como estas",
+    "que tal",
+    "todo bien",
+    "estas bien",
+    "como te encuentras",
+    "hola como estas",
+    "que haces",
+    "estas activo"
+  ]
+},
+{
+  "categoria": "agradecimiento_extendido",
+  "pregunta": "Muchas gracias por tu ayuda",
+  "respuesta": "¡Para eso estoy! Si tienes más consultas sobre la Municipalidad Distrital de Pangoa, no dudes en preguntar.",
+  "variantes": [
+    "gracias bro",
+    "te lo agradezco",
+    "muy amable",
+    "gracias por todo",
+    "thanks",
+    "ok gracias",
+    "listo gracias"
+  ]
+},
+{
+  "categoria": "confusion_usuario",
+  "pregunta": "No entiendo",
+  "respuesta": "Puedo ayudarte con consultas sobre pagos, deudas y trámites en la Municipalidad Distrital de Pangoa. Intenta hacer tu pregunta con más detalle.",
+  "variantes": [
+    "no entiendo nada",
+    "explica mejor",
+    "no comprendo",
+    "que significa",
+    "no se",
+    "estoy confundido",
+    "ayuda no entiendo"
+  ]
+},
   {
     "categoria": "pago_lugar",
     "pregunta": "¿Dónde puedo pagar mi impuesto?",
