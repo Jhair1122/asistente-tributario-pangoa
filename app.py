@@ -67,73 +67,7 @@ def predecir_respuesta(pregunta_usuario):
     except Exception as e:
         return f"Ocurrió un error al procesar su consulta: {str(e)}"
 
-# ── Gráfico de arquitectura (sin dibujar neuronas individuales) ──────────────
-def generar_grafico_red():
-    try:
-        if modelo is None or vectorizer is None or label_encoder is None:
-            fig, ax = plt.subplots(figsize=(8, 3.5))
-            ax.text(0.5, 0.5, "⚠️ Modelo no disponible",
-                    ha="center", va="center", fontsize=13, color="#888")
-            ax.axis("off")
-            return fig
 
-        n_entrada  = len(vectorizer.get_feature_names_out())
-        capas_ocultas = modelo.hidden_layer_sizes
-        if isinstance(capas_ocultas, int):
-            capas_ocultas = (capas_ocultas,)
-        n_salida = len(label_encoder.classes_)
-
-        # Representamos cada capa como un rectángulo con altura proporcional
-        capas = [("Entrada\nTF-IDF", n_entrada, "#1a6b3c"),
-                 *[(f"Oculta {i+1}\nReLU", n, "#2e86ab") for i, n in enumerate(capas_ocultas)],
-                 ("Salida\nSoftmax", n_salida, "#c45c2e")]
-
-        fig, ax = plt.subplots(figsize=(9, 4))
-        fig.patch.set_facecolor("#f8fdf9")
-        ax.set_facecolor("#f8fdf9")
-
-        max_n = max(c[1] for c in capas)
-        x_positions = np.linspace(0.1, 0.9, len(capas))
-        bar_w = 0.10
-
-        for i, (nombre, n, color) in enumerate(capas):
-            altura = 0.15 + 0.75 * (n / max_n)
-            y0 = (1 - altura) / 2
-            rect = mpatches.FancyBboxPatch(
-                (x_positions[i] - bar_w/2, y0), bar_w, altura,
-                boxstyle="round,pad=0.01",
-                linewidth=1.5, edgecolor="white",
-                facecolor=color, alpha=0.9
-            )
-            ax.add_patch(rect)
-            # Etiqueta arriba
-            ax.text(x_positions[i], y0 + altura + 0.06, nombre,
-                    ha="center", va="bottom", fontsize=8.5,
-                    fontweight="bold", color="#2d2d2d")
-            # Número de neuronas
-            ax.text(x_positions[i], y0 + altura/2, f"{n:,}",
-                    ha="center", va="center", fontsize=9,
-                    fontweight="bold", color="white")
-            # Flechas entre capas
-            if i < len(capas) - 1:
-                ax.annotate("", 
-                    xy=(x_positions[i+1] - bar_w/2 - 0.01, 0.5),
-                    xytext=(x_positions[i] + bar_w/2 + 0.01, 0.5),
-                    arrowprops=dict(arrowstyle="->", color="#888", lw=1.5))
-
-        ax.set_xlim(0, 1)
-        ax.set_ylim(0, 1.3)
-        ax.axis("off")
-        ax.set_title("Arquitectura del Modelo NLP — Red Neuronal MLP",
-                     fontsize=11, fontweight="bold", color="#1a3a24", pad=10)
-        plt.tight_layout()
-        return fig
-
-    except Exception as e:
-        fig, ax = plt.subplots(figsize=(8, 3))
-        ax.text(0.5, 0.5, f"Error: {e}", ha="center", va="center", color="red")
-        ax.axis("off")
-        return fig
 
 # ── CSS ───────────────────────────────────────────────────────────────────────
 CSS = """
@@ -415,6 +349,74 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
     txt.submit(fn=responder, inputs=[txt, chatbot], outputs=[chatbot, txt])
     demo.load(fn=bienvenida, outputs=[chatbot])
     demo.load(fn=generar_grafico_red, outputs=[grafico])
+
+# ── Gráfico de arquitectura (sin dibujar neuronas individuales) ──────────────
+def generar_grafico_red():
+    try:
+        if modelo is None or vectorizer is None or label_encoder is None:
+            fig, ax = plt.subplots(figsize=(8, 3.5))
+            ax.text(0.5, 0.5, "⚠️ Modelo no disponible",
+                    ha="center", va="center", fontsize=13, color="#888")
+            ax.axis("off")
+            return fig
+
+        n_entrada  = len(vectorizer.get_feature_names_out())
+        capas_ocultas = modelo.hidden_layer_sizes
+        if isinstance(capas_ocultas, int):
+            capas_ocultas = (capas_ocultas,)
+        n_salida = len(label_encoder.classes_)
+
+        # Representamos cada capa como un rectángulo con altura proporcional
+        capas = [("Entrada\nTF-IDF", n_entrada, "#1a6b3c"),
+                 *[(f"Oculta {i+1}\nReLU", n, "#2e86ab") for i, n in enumerate(capas_ocultas)],
+                 ("Salida\nSoftmax", n_salida, "#c45c2e")]
+
+        fig, ax = plt.subplots(figsize=(9, 4))
+        fig.patch.set_facecolor("#f8fdf9")
+        ax.set_facecolor("#f8fdf9")
+
+        max_n = max(c[1] for c in capas)
+        x_positions = np.linspace(0.1, 0.9, len(capas))
+        bar_w = 0.10
+
+        for i, (nombre, n, color) in enumerate(capas):
+            altura = 0.15 + 0.75 * (n / max_n)
+            y0 = (1 - altura) / 2
+            rect = mpatches.FancyBboxPatch(
+                (x_positions[i] - bar_w/2, y0), bar_w, altura,
+                boxstyle="round,pad=0.01",
+                linewidth=1.5, edgecolor="white",
+                facecolor=color, alpha=0.9
+            )
+            ax.add_patch(rect)
+            # Etiqueta arriba
+            ax.text(x_positions[i], y0 + altura + 0.06, nombre,
+                    ha="center", va="bottom", fontsize=8.5,
+                    fontweight="bold", color="#2d2d2d")
+            # Número de neuronas
+            ax.text(x_positions[i], y0 + altura/2, f"{n:,}",
+                    ha="center", va="center", fontsize=9,
+                    fontweight="bold", color="white")
+            # Flechas entre capas
+            if i < len(capas) - 1:
+                ax.annotate("", 
+                    xy=(x_positions[i+1] - bar_w/2 - 0.01, 0.5),
+                    xytext=(x_positions[i] + bar_w/2 + 0.01, 0.5),
+                    arrowprops=dict(arrowstyle="->", color="#888", lw=1.5))
+
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1.3)
+        ax.axis("off")
+        ax.set_title("Arquitectura del Modelo NLP — Red Neuronal MLP",
+                     fontsize=11, fontweight="bold", color="#1a3a24", pad=10)
+        plt.tight_layout()
+        return fig
+
+    except Exception as e:
+        fig, ax = plt.subplots(figsize=(8, 3))
+        ax.text(0.5, 0.5, f"Error: {e}", ha="center", va="center", color="red")
+        ax.axis("off")
+        return fig
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
