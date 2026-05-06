@@ -79,17 +79,6 @@ body, .gradio-container {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* SUGERENCIAS */
-.sugerencias-wrap {
-    padding: 15px 20px;
-}
-
-.sugerencias-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
 .chip {
     background: #fff;
     border: 1px solid #d0e2d3;
@@ -186,13 +175,6 @@ chips_html = (
     '<div class="sugerencias-label">Preguntas frecuentes</div>'
     '<div class="sugerencias-grid">'
 )
-for s in SUGERENCIAS:
-    chips_html += (
-        f'<button class="chip" onclick="(function(){{'
-        f'var ta=document.querySelector(\'textarea\');'
-        f'if(ta){{ta.value=\'{s}\';ta.dispatchEvent(new Event(\'input\',{{bubbles:true}}));}}'
-        f'}})()\">{s}</button>'
-    )
 chips_html += '</div></div><div class="divider"></div>'
 
 with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
