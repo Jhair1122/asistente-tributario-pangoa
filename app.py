@@ -64,119 +64,119 @@ def predecir_respuesta(pregunta_usuario):
         return f"Ocurrió un error al procesar su consulta: {str(e)}"
 
 CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body, .gradio-container {
-    background: linear-gradient(135deg, #eef5ef 0%, #e6f2e8 100%) !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    background: #f3f6f4 !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
-/* CONTENEDOR CENTRADO (NO FULL SCREEN EXAGERADO) */
+/* CONTENEDOR CENTRAL */
 .gradio-container {
-    max-width: 1100px !important;
+    max-width: 900px !important;
     margin: auto !important;
-    padding-bottom: 20px;
 }
 
-/* HEADER MÁS ELEGANTE */
+/* HEADER ESTILO APP */
 .chat-header {
     background: linear-gradient(135deg, #0d4a2a, #1a6b3c);
-    padding: 30px;
-    border-radius: 0 0 25px 25px;
+    padding: 20px 25px;
+    border-radius: 0 0 20px 20px;
     color: white;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 /* SUGERENCIAS */
 .sugerencias-wrap {
-    padding: 20px 30px;
+    padding: 15px 20px;
 }
 
 .sugerencias-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .chip {
-    background: #ffffff;
-    border: 1px solid #c5dcc9;
+    background: #fff;
+    border: 1px solid #d0e2d3;
     border-radius: 20px;
-    padding: 8px 15px;
-    font-size: 13px;
+    padding: 7px 14px;
+    font-size: 12px;
     color: #145c32;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: 0.2s;
 }
 
 .chip:hover {
     background: #145c32;
     color: #fff;
-    transform: translateY(-2px);
 }
 
-/* CHAT COMO TARJETA */
+/* CHAT */
 .gradio-container [data-testid="chatbot"] {
     background: #ffffff !important;
-    margin: 10px 30px !important;
-    border-radius: 18px !important;
-    height: 420px !important;   /* 🔥 más pequeño */
-    overflow-y: auto !important;
-    border: 1px solid #dbe8dc !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    padding: 10px;
+    margin: 10px 20px !important;
+    border-radius: 16px !important;
+    height: 420px !important;
+    border: 1px solid #e2e8e3 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    padding: 15px;
 }
 
-/* INPUT ZONA */
+/* 🔥 BURBUJAS (SIMULADAS) */
+.gradio-container [data-testid="chatbot"] .message {
+    padding: 10px 14px !important;
+    border-radius: 14px !important;
+    margin-bottom: 8px !important;
+    max-width: 75%;
+}
+
+/* USUARIO (DERECHA) */
+.gradio-container [data-testid="chatbot"] .message.user {
+    background: #145c32 !important;
+    color: white !important;
+    margin-left: auto !important;
+}
+
+/* BOT (IZQUIERDA) */
+.gradio-container [data-testid="chatbot"] .message.bot {
+    background: #f1f5f2 !important;
+    color: #1a2e1e !important;
+}
+
+/* INPUT COMO APP */
 .gradio-row {
-    margin: 10px 30px;
+    margin: 10px 20px;
 }
 
 /* INPUT */
 .gradio-container textarea {
-    background: #ffffff !important;
-    color: #1a2e1e !important;
-    border: 1px solid #c5dcc9 !important;
-    border-radius: 14px !important;
-    padding: 12px !important;
+    border-radius: 20px !important;
+    padding: 12px 16px !important;
+    border: 1px solid #d0e2d3 !important;
 }
 
-/* BOTÓN */
+/* BOTÓN REDONDO */
 #btn-enviar {
-    background: linear-gradient(135deg, #145c32, #1a6b3c) !important;
+    border-radius: 20px !important;
+    background: #145c32 !important;
     color: white !important;
-    border-radius: 14px !important;
     font-weight: 600;
-    transition: 0.2s;
 }
 
 #btn-enviar:hover {
-    transform: scale(1.05);
     background: #0d4a2a !important;
-}
-
-/* TEXTO */
-.gradio-container * {
-    color: #1a2e1e;
 }
 
 /* DISCLAIMER */
 .disclaimer {
     text-align: center;
-    font-size: 12px;
-    color: #6c8f74;
+    font-size: 11px;
+    color: #7a9c86;
     padding: 10px;
-}
-
-/* SCROLL */
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-thumb {
-    background: #145c32;
-    border-radius: 10px;
 }
 """
 
@@ -216,7 +216,7 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
 
     gr.HTML(chips_html)
 
-    chatbot = gr.Chatbot(label="", height=420, show_label=False)
+    chatbot = gr.Chatbot(label="", height=420, show_label=False, bubble_full_width=False)
 
     with gr.Row():
         txt = gr.Textbox(
