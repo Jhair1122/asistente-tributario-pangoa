@@ -226,7 +226,7 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
 
     gr.HTML("""
     <div class="chat-header">
-        <div class="header-badge"><span class="header-dot"></span>En línea</div>
+        <div class="header-badge"><span class="header-dot"></span></div>
         <div class="header-title">🏛️ Asistente Tributario Virtual</div>
         <div class="header-sub">Municipalidad Distrital de Pangoa · Subgerencia de Rentas y Orientación Tributaria</div>
     </div>
