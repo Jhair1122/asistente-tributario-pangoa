@@ -69,12 +69,11 @@ CSS = """
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body, .gradio-container {
-    background: linear-gradient(135deg, #eef5ef 0%, #e6f2e8 100%) !important;
+    background: #f4f8f5 !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    min-height: 100vh;
 }
 
-/* 🔥 AHORA USA TODO EL ANCHO */
+/* 🔥 USAR TODO EL ANCHO SIN ROMPER */
 .gradio-container {
     max-width: 100% !important;
     padding: 0 !important;
@@ -82,10 +81,10 @@ body, .gradio-container {
 
 /* HEADER */
 .chat-header {
-    background: linear-gradient(135deg, #0d4a2a 0%, #1a6b3c 60%, #145c32 100%);
-    padding: 30px 40px;
-    border-radius: 0 0 30px 30px;
-    box-shadow: 0 6px 30px rgba(13,74,42,0.25);
+    background: linear-gradient(135deg, #0d4a2a, #1a6b3c);
+    padding: 25px 40px;
+    border-radius: 0 0 25px 25px;
+    color: white;
 }
 
 /* SUGERENCIAS */
@@ -101,80 +100,71 @@ body, .gradio-container {
 
 .chip {
     background: #ffffff;
-    border: 1.5px solid #c5dcc9;
+    border: 1px solid #c5dcc9;
     border-radius: 20px;
-    padding: 8px 16px;
+    padding: 8px 14px;
     font-size: 13px;
+    color: #145c32;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: 0.2s;
 }
 
 .chip:hover {
     background: #145c32;
-    color: white;
-    transform: scale(1.05);
+    color: #fff;
 }
 
-/* CHAT MÁS GRANDE */
+/* CHAT (ARREGLADO) */
 .gradio-container [data-testid="chatbot"] {
     background: #ffffff !important;
-    border-radius: 20px !important;
     margin: 0 40px !important;
-    height: 500px !important;
+    border-radius: 16px !important;
+    height: 480px !important;
     overflow-y: auto !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    padding: 10px;
+    border: 1px solid #dbe8dc !important;
 }
 
-/* MENSAJES MÁS BONITOS */
-.message.user {
-    background: #145c32 !important;
-    color: white !important;
-    border-radius: 14px !important;
-    padding: 10px 14px !important;
-}
+/* 🔥 IMPORTANTE: NO TOCAR message.user/bot (rompe texto) */
 
-.message.bot {
-    background: #f1f5f2 !important;
-    border-radius: 14px !important;
-    padding: 10px 14px !important;
-}
-
-/* INPUT FIJO ABAJO */
+/* INPUT ZONA */
 .gradio-row {
-    position: sticky;
-    bottom: 0;
-    background: #eef5ef;
     padding: 15px 40px;
-    border-top: 1px solid #c5dcc9;
 }
 
 /* INPUT */
 .gradio-container textarea {
-    border-radius: 14px !important;
-    padding: 12px !important;
+    background: #ffffff !important;
+    color: #1a2e1e !important;
+    border: 1px solid #c5dcc9 !important;
+    border-radius: 12px !important;
 }
 
 /* BOTÓN */
 #btn-enviar {
     background: #145c32 !important;
-    border-radius: 14px !important;
-    font-weight: bold;
+    color: white !important;
+    border-radius: 12px !important;
+    font-weight: 600;
 }
 
 #btn-enviar:hover {
     background: #0d4a2a !important;
 }
 
+/* TEXTO GENERAL (FIX VISIBILIDAD) */
+.gradio-container * {
+    color: #1a2e1e;
+}
+
 /* DISCLAIMER */
 .disclaimer {
     text-align: center;
     font-size: 12px;
+    color: #6c8f74;
     padding: 10px;
-    color: #6b8f74;
 }
 
-/* SCROLL BONITO */
+/* SCROLL */
 ::-webkit-scrollbar {
     width: 6px;
 }
