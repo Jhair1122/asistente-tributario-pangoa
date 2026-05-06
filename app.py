@@ -393,17 +393,16 @@ with gr.Blocks(css=CSS, title="Asistente Tributario — Pangoa") as demo:
 
     chatbot = gr.Chatbot(label="", height=400, show_label=False)
 
-    # Gráfico de arquitectura
-    gr.HTML('<div class="grafico-wrap"><div class="grafico-titulo">🧠 Arquitectura de la Red Neuronal MLP</div>')
-    grafico = gr.Plot(label="", show_label=False)
-    gr.HTML('</div>')
-
     with gr.Row():
         txt = gr.Textbox(
             placeholder="Escribe tu consulta tributaria aquí...",
             show_label=False, lines=1, scale=8, container=False,
         )
         btn = gr.Button("Enviar →", scale=2, variant="primary", elem_id="btn-enviar")
+         # Gráfico de arquitectura
+    gr.HTML('<div class="grafico-wrap"><div class="grafico-titulo">🧠 Arquitectura de la Red Neuronal MLP</div>')
+    grafico = gr.Plot(label="", show_label=False)
+    gr.HTML('</div>')
 
     gr.HTML("""
     <div class="disclaimer">
