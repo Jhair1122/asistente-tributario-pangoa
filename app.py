@@ -69,27 +69,29 @@ CSS = """
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body, .gradio-container {
-    background: #f4f8f5 !important;
+    background: linear-gradient(135deg, #eef5ef 0%, #e6f2e8 100%) !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
-/* 🔥 USAR TODO EL ANCHO SIN ROMPER */
+/* CONTENEDOR CENTRADO (NO FULL SCREEN EXAGERADO) */
 .gradio-container {
-    max-width: 100% !important;
-    padding: 0 !important;
+    max-width: 1100px !important;
+    margin: auto !important;
+    padding-bottom: 20px;
 }
 
-/* HEADER */
+/* HEADER MÁS ELEGANTE */
 .chat-header {
     background: linear-gradient(135deg, #0d4a2a, #1a6b3c);
-    padding: 25px 40px;
+    padding: 30px;
     border-radius: 0 0 25px 25px;
     color: white;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
 }
 
 /* SUGERENCIAS */
 .sugerencias-wrap {
-    padding: 20px 40px;
+    padding: 20px 30px;
 }
 
 .sugerencias-grid {
@@ -102,33 +104,34 @@ body, .gradio-container {
     background: #ffffff;
     border: 1px solid #c5dcc9;
     border-radius: 20px;
-    padding: 8px 14px;
+    padding: 8px 15px;
     font-size: 13px;
     color: #145c32;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
 .chip:hover {
     background: #145c32;
     color: #fff;
+    transform: translateY(-2px);
 }
 
-/* CHAT (ARREGLADO) */
+/* CHAT COMO TARJETA */
 .gradio-container [data-testid="chatbot"] {
     background: #ffffff !important;
-    margin: 0 40px !important;
-    border-radius: 16px !important;
-    height: 480px !important;
+    margin: 10px 30px !important;
+    border-radius: 18px !important;
+    height: 420px !important;   /* 🔥 más pequeño */
     overflow-y: auto !important;
     border: 1px solid #dbe8dc !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 10px;
 }
-
-/* 🔥 IMPORTANTE: NO TOCAR message.user/bot (rompe texto) */
 
 /* INPUT ZONA */
 .gradio-row {
-    padding: 15px 40px;
+    margin: 10px 30px;
 }
 
 /* INPUT */
@@ -136,22 +139,25 @@ body, .gradio-container {
     background: #ffffff !important;
     color: #1a2e1e !important;
     border: 1px solid #c5dcc9 !important;
-    border-radius: 12px !important;
+    border-radius: 14px !important;
+    padding: 12px !important;
 }
 
 /* BOTÓN */
 #btn-enviar {
-    background: #145c32 !important;
+    background: linear-gradient(135deg, #145c32, #1a6b3c) !important;
     color: white !important;
-    border-radius: 12px !important;
+    border-radius: 14px !important;
     font-weight: 600;
+    transition: 0.2s;
 }
 
 #btn-enviar:hover {
+    transform: scale(1.05);
     background: #0d4a2a !important;
 }
 
-/* TEXTO GENERAL (FIX VISIBILIDAD) */
+/* TEXTO */
 .gradio-container * {
     color: #1a2e1e;
 }
