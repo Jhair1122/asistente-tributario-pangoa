@@ -38,18 +38,23 @@
 {
   "categoria": "recomendacion_pago",
   "pregunta": "¿Qué debo hacer si no puedo pagar?",
-  "respuesta": "Si tiene dificultades para pagar su deuda, se recomienda acercarse a la Subgerencia de Rentas de la Municipalidad Distrital de Pangoa para evaluar opciones como el fraccionamiento o facilidades de pago.",
+  "respuesta": "Si no puede pagar el total de su deuda, puede acercarse a la Subgerencia de Rentas de la Municipalidad Distrital de Pangoa para solicitar un fraccionamiento o facilidades de pago según su situación.",
   "variantes": [
     "no tengo dinero para pagar",
     "no me alcanza para pagar",
-    "que hago si no puedo pagar",
     "no puedo pagar mi deuda",
-    "no tengo plata para impuestos",
-    "como soluciono mi deuda",
-    "que opciones tengo para pagar",
-    "ayuda con mi deuda",
+    "no puedo pagar todo",
     "no puedo pagar completo",
-    "que hago con mi deuda"
+    "no tengo plata para impuestos",
+    "que hago si no puedo pagar",
+    "que hago si no me alcanza",
+    "no puedo pagar de golpe",
+    "como hago si no tengo dinero",
+    "estoy sin dinero para pagar",
+    "no puedo pagar ahora",
+    "no tengo para pagar impuestos",
+    "no me alcanza para pagar todo",
+    "que opciones tengo si no puedo pagar"
   ]
 },
 {
@@ -525,21 +530,57 @@
     ]
   },
   {
-    "categoria": "fraccionamiento_caso",
-    "pregunta": "Tengo deudas antiguas y quiero pagar en cuotas",
-    "respuesta": "Si tiene deudas acumuladas de varios años, puede solicitar un fraccionamiento acercándose a la Subgerencia de Rentas con su DNI. El personal evaluará su caso y podrá ofrecerle un plan de pagos en cuotas de acuerdo a su situación.",
-    "variantes": [
-      "tengo años de deuda y quiero pagar en cuotas",
-      "debo varios años y no puedo pagar todo",
-      "tengo deuda acumulada",
-      "quiero pagar poco a poco",
-      "no puedo pagar todo de golpe",
-      "tengo muchos años sin pagar",
-      "como puedo hacer si tengo años morosos",
-      "COMO PUEDO HACER SI TENGO AÑOS MOROSOS Y QUIERO PAGAR EN CUOTAS",
-      "tengo deuda antigua puedo pagar en partes"
-    ]
+  "categoria": "fraccionamiento_caso",
+  "pregunta": "No puedo pagar todo de una vez",
+  "respuesta": "Si no puede pagar su deuda completa de una sola vez, puede solicitar un fraccionamiento en la Subgerencia de Rentas de la Municipalidad Distrital de Pangoa. Allí evaluarán su caso y le ofrecerán un plan de pagos en cuotas.",
+  "variantes": [
+    "no puedo pagar todo de golpe",
+    "no puedo pagar de una vez",
+    "quiero pagar poco a poco",
+    "puedo pagar en partes",
+    "no tengo para pagar todo",
+    "quiero pagar en cuotas",
+    "como pago en partes",
+    "no me alcanza para pagar todo junto",
+    "puedo dividir mi deuda",
+    "quiero pagar en mensualidades",
+    "no puedo pagar todo junto",
+    "como hago si no puedo pagar completo",
+    "quiero pagar de a pocos"
+  ]
   },
+  {
+  "categoria": "que_haces",
+  "pregunta": "¿Qué puedes hacer?",
+  "respuesta": "Puedo ayudarte con consultas sobre pagos de impuestos, deudas, fraccionamientos, fechas de pago y trámites en la Municipalidad Distrital de Pangoa.",
+  "variantes": [
+    "que haces",
+    "que puedes hacer",
+    "en que ayudas",
+    "para que sirves",
+    "que puedo preguntarte",
+    "que tipo de consultas haces",
+    "como me puedes ayudar",
+    "que consultas respondes",
+    "que sabes hacer"
+  ]
+},
+  {
+  "categoria": "seguimiento_pago",
+  "pregunta": "Continuación sobre pago",
+  "respuesta": "Si no puede pagar el total de su deuda, puede optar por el fraccionamiento. Le recomiendo acercarse a la Subgerencia de Rentas para evaluar un plan de pagos en cuotas.",
+  "variantes": [
+    "y si no puedo pagar todo",
+    "pero no me alcanza",
+    "y si no tengo dinero",
+    "pero no puedo pagar todo",
+    "y ahora que hago",
+    "entonces que hago si no tengo dinero",
+    "pero no tengo plata",
+    "que hago entonces",
+    "y si no puedo pagar completo"
+  ]
+},
   {
     "categoria": "multa_consecuencia",
     "pregunta": "¿Qué pasa si no pago a tiempo?",
